@@ -1,0 +1,151 @@
+= Asciidoctor Maven Plugin: Examples
+:uri-freesoftware: https://www.gnu.org/philosophy/free-sw.html
+
+This repository contains a collection of sample projects that demonstrate numerous ways to use the Asciidoctor Maven plugin in a Maven project.
+
+== Getting the examples
+
+Clone the example repository using git:
+
+ $ git clone https://github.com/asciidoctor/asciidoctor-maven-examples
+
+Refer to the README file in each individual project to learn how to run it.
+
+== Example catalog
+
+link:asciidoc-to-html-example/README.adoc[asciidoc-to-html-example] (aka "`The Quickstart`")::
+Demonstrates how to convert AsciiDoc to HTML5 using the Asciidoctor Maven plugin.
+
+link:asciidoc-to-html-multipage-example/README.adoc[asciidoc-to-html-multipage-example]::
+Demonstrates how to convert AsciiDoc to multiple HTML pages with the Asciidoctor Maven plugin and https://github.com/owenh000/asciidoctor-multipage[Asciidoctor Multipage Extension^].
+
+link:docbook-pipeline-docbkx-example/README.adoc[docbook-pipeline-docbkx-example]::
+Demonstrates how to convert AsciiDoc to DocBook and feed it to the DocBook pipeline to generate a PDF using the Asciidoctor and Docbkx Maven plugins.
+
+link:asciidoctor-diagram-example/README.adoc[asciidoctor-diagram-example]::
+Demonstrates how to integrate Asciidoctor Diagram with the Asciidoctor Maven plugin.
+
+link:asciidoctor-pdf-example/README.adoc[asciidoctor-pdf-example]::
+Demonstrates how to convert AsciiDoc to PDF using Asciidoctor PDF with the Asciidoctor Maven plugin.
+
+link:asciidoctor-epub-example/README.adoc[asciidoctor-epub-example]::
+Demonstrates how to convert AsciiDoc to epub using Asciidoctor EPUB with the Asciidoctor Maven plugin. (contains also an example for .mobi (Kindle) output)
+
+link:asciidoc-maven-site-converter-example/README.adoc[asciidoc-maven-site-converter-example]::
+Demonstrates how to process AsciiDoc in a Maven site using the Asciidoctor Converter Doxia Module.
+
+link:asciidoc-maven-site-parser-example/README.adoc[asciidoc-maven-site-parser-example]::
+Demonstrates how to process AsciiDoc in a Maven site using the Asciidoctor Parser Doxia Module.
+
+link:asciidoc-multiple-inputs-example/README.adoc[asciidoc-multiple-inputs-example]::
+An example project that demonstrates how to convert multiple input AsciiDoc documents to HTML5 and PDF using the
+Asciidoctor Maven plugin.
+
+link:java-extension-example/README.adoc[java-extension-example]::
+An example project that demonstrates how to create an extension for Asciidoctorj (written in Java) and how to use it in an other documentation Maven module.
+
+link:asciidoc-to-revealjs-example/README.adoc[asciidoc-to-revealjs-example]::
+Demonstrates how to convert AsciiDoc to reveal.js using Asciidoctor revealjs with the Asciidoctor Maven plugin.
+
+== Root pom.xml
+
+The root `pom.xml` (aggregate build) is provided to allow you to run all the example projects at once using a single invocation of Maven.
+It also drives the continuous integration (CI) build.
+The root `pom.xml` does not contain any shared build configuration so that each of the projects can be used independently.
+This makes the examples suitable as independent references and as a starting point for your own project.
+
+=== Usage
+
+Invoke the `compile` goal (configured as the default goal) on this folder (`asciidoctor-maven-example`):
+
+ $ mvn
+
+== On JRuby dependency
+
+Asciidoctor Maven plugin relies on https://github.com/asciidoctor/asciidoctor[asciidoctor] project to do the actual rendering. This is a Ruby implementation integrated thanks to the https://jruby.org/[JRuby] project, which is a required dependency to run the plugin. The maven plugin provides a default version of the `jruby-complete` artifact to ease its configuration. However, it can be overwritten just adding a custom version in the plugin's dependency section as seen in the following example:
+[source,xml,indent=2]
+----
+<plugin>
+    <groupId>org.asciidoctor</groupId>
+    <artifactId>asciidoctor-maven-plugin</artifactId>
+    <version>${asciidoctor.maven.plugin.version}</version>
+    <dependencies>
+        <dependency>
+            <groupId>org.jruby</groupId>
+            <artifactId>jruby</artifactId>
+            <version>${jruby.version}</version>
+        </dependency>
+    <dependencies>
+</plugin>
+---- 
+
+== Contributing
+
+We want you!
+Yes, _you_.
+
+*Anyone* can contribute to an Asciidoctor project.
+If you have a specialty, or just some creativity to share, we need your participation.
+We have big aspirations for the project and we need an assortment of skill sets in order to reach them.
+Make no mistake, contributing is _not_ just for developers.
+
+Of course, we'll always need help with the code as it's the basis of the project.
+But code isn't going to make the project successful alone.
+We also need documentation, automation, design, marketing, communication, advocacy and more for it to make an impact.
+
+Here are just a few of the ways you can contribute to the project:
+
+* Reporting bugs (_The easiest way to get started!_)
+* Sharing ideas on https://asciidoctor.zulipchat.com/ or https://discuss.asciidoctor.org
+* Suggesting new feature or improvements in the issue tracker
+* Speaking about the technology
+* Advocating for the technology
+* Assisting with design and/or UX (stylesheets, themes, logos, etc)
+* Conducting user studies and collecting feedback
+* Automating system administration tasks (releases, changelog, announcements, hosting, etc)
+* Writing, editing or maintaining the documentation
+* Organizing the content (information architecture & content strategy)
+* Using or extending the software in a creative way
+* Testing a prerelease, a pull request or master
+* Reviewing or providing feedback on pull requests
+* Writing code (_No patch is too small!_)
+** Fixing typos
+** Adding or revising comments or API docs
+** Fixing issues
+** Writing tests
+** Refactoring the code
+* Something we haven't suggested...seriously!
+
+The best way to get involved is just to show up and express your interest.
+We have a very friendly and encouraging culture.
+Harassment or offensive behavior is simply not tolerated.
+We are positive, even when being critical.
+We also strive to lift others up and help them be successful.
+We want your choice to participate in an Asciidoctor project be the start of an exciting and rewarding journey.
+So thanks for showing up!
+
+=== Code conventions
+
+Even when this project does not contain much code, we encourage the following good practices to improve accessibility and ease the use of the examples:
+
+* Document relevant details of an example in the appropriate README file
+** what makes this example useful
+** relevant components used (backends, extensions, ...)
+** how to execute the example and see the results
+** possible use scenarios
+* Comment relevant Java methods and classes, especially when writing extensions
+* Follow simples code conventions to improve readability on the web
+** Use 4 white spaces instead of tabs
+** Avoid long lines in the Java code (they’re good in AsciiDoc files though)
+* Tests are named after each example name.
+
+To help with style conventions https://editorconfig.org/[editorconfig] is provided.
+It only checks for tabs (which should be replaced by white spaces) and line breaks.
+Most populars IDE support it out-of-the-box or via plugins.
+
+== Copyright and Licensing
+
+Copyright (C) 2014 The Asciidoctor Project.
+Free use of this software is granted under the terms of the MIT License.
+
+See the link:LICENSE.adoc[] file for details.

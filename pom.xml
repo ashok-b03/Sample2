@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.asciidoctor.maven</groupId>
+    <artifactId>asciidoc-asciidoctor-maven-examples</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>AsciiDoc Maven Examples</name>
+    <description>Collection of sample projects that demonstrate numerous ways to use the Asciidoctor Maven plugin in a Maven project.</description>
+
+    <modules>
+        <module>asciidoc-maven-site-converter-example</module>
+        <module>asciidoc-maven-site-parser-example</module>
+        <module>asciidoc-to-html-example</module>
+        <module>asciidoc-to-html-multipage-example</module>
+        <module>asciidoc-to-revealjs-example</module>
+        <module>asciidoctor-pdf-example</module>
+        <module>asciidoctor-epub-example</module>
+        <module>asciidoctor-pdf-cjk-example</module>
+        <module>asciidoctor-pdf-with-theme-example</module>
+        <module>asciidoctor-diagram-example</module>
+        <module>asciidoc-multiple-inputs-example</module>
+        <module>docbook-pipeline-docbkx-example</module>
+        <module>java-extension-example</module>
+        <module>tests</module>
+    </modules>
+
+    <build>
+        <defaultGoal>compile</defaultGoal>
+    </build>
+
+</project>

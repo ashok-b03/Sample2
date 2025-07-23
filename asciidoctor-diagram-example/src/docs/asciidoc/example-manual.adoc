@@ -1,0 +1,98 @@
+= Example Manual
+Doc Writer <doc.writer@example.org>
+v1.0, 2014-09-09
+:example-caption!:
+ifndef::imagesdir[:imagesdir: images]
+
+This is a user manual for an example project.
+
+== Introduction
+
+This project does something.
+We just haven't decided what that is yet.
+
+== Diagrams
+
+[ditaa,asciidoctor-diagram-process]
+....
+                   +-------------+
+                   | Asciidoctor |-------+
+                   |   diagram   |       |
+                   +-------------+       | PNG out
+                       ^                 |
+                       | ditaa in        |
+                       |                 v
+ +--------+   +--------+----+    /---------------\
+ |        |---+ Asciidoctor +--->|               |
+ |  Text  |   +-------------+    |   Beautiful   |
+ |Document|   |   !magic!   |    |    Output     |
+ |     {d}|   |             |    |               |
+ +---+----+   +-------------+    \---------------/
+     :                                   ^
+     |          Lots of work             |
+     +-----------------------------------+
+....
+
+[plantuml,auth-protocol]
+....
+Alice -> Bob: Authentication Request
+Bob --> Alice: Authentication Response
+
+Alice -> Bob: Another authentication Request
+Alice <-- Bob: another authentication Response
+....
+
+[plantuml,aspectj-maven-multi-module]
+....
+@startuml
+
+!pragma layout smetana
+
+skinparam component {
+  BackgroundColor<<Using Aspects>> #EEEEFF
+  BorderColor<<Using Aspects>> black
+}
+
+node poms {
+
+    component "rootParentPOM"
+    component "aspectParentPOM"
+
+    [rootParentPOM] <|.. [aspectParentPOM]
+}
+
+node aspect_definition_projects {
+
+    component "validation-api"
+    component "validation-aspect"
+
+    [rootParentPOM] <|... [validation-api]
+    [rootParentPOM] <|.. [validation-aspect]
+    [validation-api] *-- [validation-aspect]
+    [validation-aspect] *-- [aspectParentPOM]
+}
+
+component "mavenProjectWithAspects"<<Using Aspects>>
+[aspectParentPOM] <|.. [mavenProjectWithAspects]
+
+@enduml
+....
+
+[plantuml, dot-example]
+----
+digraph g {
+    a -> b
+    b -> c
+    c -> d
+    d -> a
+}
+----
+
+== Attributes
+
+.Built-in
+asciidoctor-version:: {asciidoctor-version}
+safe-mode-name:: {safe-mode-name}
+docdir:: {docdir}
+docfile:: {docfile}
+imagesdir:: {imagesdir}
